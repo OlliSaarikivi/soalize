@@ -4,16 +4,18 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{20B095D1-680E-4796-B795-1E034CD82973}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{EE05610F-34F5-45B2-9305-51208E38F40F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Soalize.Transpiler</RootNamespace>
-    <AssemblyName>Soalize.Transpiler</AssemblyName>
+    <RootNamespace>Soalize.CommandLine</RootNamespace>
+    <AssemblyName>soalize</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +25,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -151,31 +154,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Compilations.cs" />
-    <Compile Include="CompilationExtensions.cs" />
-    <Compile Include="DirectAccessRewriter.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SemanticExtensions.cs" />
-    <Compile Include="SyntaxExtensions.cs" />
-    <Compile Include="RewriteTarget.cs" />
-    <Compile Include="TranspilationException.cs" />
-    <Compile Include="Driver.cs" />
-    <Compile Include="Context.cs" />
-    <Compile Include="ValueArraySpecializer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Transpiler\Transpiler.csproj">
+      <Project>{20b095d1-680e-4796-b795-1e034cd82973}</Project>
+      <Name>Transpiler</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Compiletime\Compiletime.csproj">
-      <Project>{f1d7e5ba-d77c-4944-b2af-672b9a1db3a5}</Project>
-      <Name>Compiletime</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
